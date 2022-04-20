@@ -1,0 +1,219 @@
+<section class="property-binding">
+
+    <article>
+        <h3>Interpolation / Interpolação</h3>
+        <p>String renderizada com interpolação: {{ url }}</p>
+        <p>Resultado de 1 + 1 é: {{ 1 + 1 }}</p>
+        <p>Resultado de 1 + 1 não é: {{ 1 + 1 + getValor()}}</p>
+        <p>Curso de Angular e gosto do curso: {{ cursoAngular && getCurtirCurso() }}</p>
+    </article>
+
+    <article>
+        <h3>Property Binding</h3>
+        <img src="{{ urlImagem }}">     <!--Interpolação-->
+        <img [src]="urlImagem">         <!--Property Binding-->
+        <img bind-src="urlImagem">      <!--Binding Search-->
+    </article>
+
+    <!-- Property Binding 
+     > Valor do Component para o Template
+     > Usa-se colchetes <img [src]="urlImg"/>
+     > Formato padrão é através de bind-nomePropriedade <img bind-src="urlImg"/>
+     > Quando não existe uma propriedade no elemento, usa-se [attr.colspan] OBS: Muito raro de ser usado
+    -->
+
+
+    <!-- XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX -->
+    <!-- Parte da Aula 10 - Class e Style Binding -->
+
+    <article>
+        <hr>
+        <h1>Parte da Aula 10 - Class e Style Binding</h1>
+        <h3>Class e Style Binding</h3>
+        <div>
+            Selecione uma classe:
+            <select #classe (change)="0" > <!-- Variavel local de template para acessar os options -->
+                <option value="alert-success">Sucesso</option>
+                <option value="alert-info">Info</option>
+                <option value="alert-warning">Alerta</option>
+                <option value="alert-danger">Erro</option>
+            </select>
+            <br><br>
+
+            <!-- Interpolação com Style Binding -->
+            <div class="alert {{ classe.value }}" role="alert">
+                Texto colorido conforme o valor do combox.
+            </div>
+
+            <!-- Property Binding de Classes -->
+            <div class="alert" role="alert" 
+                [class.alert-success]="classe.value == 'alert-success'">
+                Sucesso
+            </div>
+            <div class="alert" role="alert" 
+                [class.alert-info]="classe.value == 'alert-info'">
+                Info
+            </div>
+            <div class="alert" role="alert"
+                [class.alert-warning]="classe.value == 'alert-warning'">
+                Alerta
+            </div>
+            <div class="alert" role="alert"
+                [class.alert-danger]="classe.value == 'alert-danger'">
+                Erro
+            </div>
+
+            <!-- Property Binding com estilo de classe -->
+            <!-- O texto só vai ficar vermelho em caso de erro -->
+            <div class="alert alert-danger" role="alert"
+            [style.display]="classe.value == 'alert-danger' ? 'block' : 'none' "> <!-- Display block em caso que queira que esse texto apareça, e display nome em caso de que não queira que o texto apareça -->
+                Erro com if ternario usando Style Binding
+            </div>
+
+        </div>
+    </article>
+
+
+    <!-- XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX -->
+    <!-- Parte da Aula 11 - Event Binding -->
+
+    <section class="event-binding">
+
+        <article>
+            <h1>Parte da Aula 11 - Event Binding</h1>
+            <h3>Event Binding</h3>
+            <div>
+                <p class="text-success">Eventos de clique</p>
+                <!-- No Property Binding a gente usa colchetes[] para indicar para o Angular que a gente quer utilizar um Binding de propriedades, e no Event nós usamos parentes() -->
+                <!-- Necessario criar um novo método no data-binding.components.ts -->
+                <!-- Por trás dos panos o Angular esta usando o on-click -->
+                <button (click)="botaoClicado()"
+                class="btn btn-primary">
+                    Me clique!
+                </button>
+
+                <br><br>
+                <p class="text-success">Eventos para recuperar valores de input</p>
+                <!-- Escutando eventos -->
+                <!-- KeyUp para pegar o valor que ta sendo inputado nesse campo texto é preciso passar o evento para o método porém para fazer referencia ao evento é necessario colocar o sinal de dollar $ -->
+                <input type="text" 
+                    (keyup)="onKeyUp($event)"
+                    (keyup.enter)="salvarValor(campoInput.value)" 
+                    (blur)="salvarValor($any($event.target).value)" 
+                    #campoInput   
+                />
+                <!-- KeyUp.Enter para salvar o valor digitador ao apertar enter -->
+                <!-- Brur para escutar o evento de quando o campo perdi o foco, ou seja ao clicar em qualquer outro lugar -->
+
+                <p>Valor atual: {{ valorAtual }}</p>
+                <p>Valor salvo: {{ valorSalvo }}</p>
+
+                <br><br>
+                <p class="text-success">Eventos de mouse</p>
+                <span 
+                    (mouseover)="onMouseOverOut()"
+                    (mouseout)="onMouseOverOut()"
+                    [class.highlight]="isMouseOver">
+                    Passe o mouse sobre mim
+                </span>
+                <!-- MouseOver para quando o mouse estiver me cima do texto -->
+                <!-- MouseOut para quando o mouse sair de cima do texto -->
+
+            </div>
+        </article>
+
+    </section>
+
+
+    <!-- XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX -->
+    <!-- Parte da Aula 12 - Two-Way Data-Binding -->
+
+    <section class="two-way-binding">
+
+        <article>
+            <h1>Parte da Aula 12 - Two-Way Data-Binding</h1>
+            <h3>Two-Way Data-Binding</h3>
+            <div>
+
+                <!-- 
+
+                    [value]="nome" Aqui temos associação de propriedade
+
+                    (input)="updateValor($any($event.target).value)" Aqui temos associação de eventos
+
+                    Porém quando estamos trabalhando com Two-Way é geralmente usado em formulario e dependendo do formulario pode ter mais de 20 campos então ficaria muito trabalhoso ficar digitando tudo isso, então temos um segundo exemplo
+
+                -->
+                <p class="text-success">Primeiro Exemplo padrão</p>
+                <input type="text" 
+                    [value]="nome"
+                    (input)="updateValor($any($event.target).value)"
+                />
+                <!-- Passar o valor do template para o componente utilizando o Event Binding -->
+                <!-- evento input para quando o campo for atualizado -->
+
+                <!-- Segundo exemplo -->
+                <p class="text-success">Segundo Exemplo canonica(SIMPLES)</p>
+                <!-- O Angular tem uma propriedade chamada de ngModel, representação de uma entidade, e essa entidade pode ser um campo simples como string ou até mesmo um objeto. E para parte de eventos o ngModel também tem um evento especial chamado de ngModelChange que é para quando esse campo for atualizado. E não precisamos da diretiva target.value pq o Angular já sabe obter o evento -->
+                <input type="text" 
+                    [ngModel]="nome"
+                    (ngModelChange)="updateValor($any($event))"
+                />
+
+                <!-- Mas ainda precisamos de uma forma mais simplificada que é utolozando o Two-Way Data-Binding. Juntando um Binding de propriedade e um Binding de evento chamado também de BANANA IN A BOX ou banana na caixa -->
+                <input type="text" [(ngModel)]="nome" />
+
+                <p>Você digitou: {{ nome }}</p>
+
+                <div>
+
+                    <!-- Two-Way Data-Binding com objetos -->
+                    <p class="text-success">Terceiro Exemplo forma simplificada. Two-Way Data-Binding com objetos</p>
+                    <input type="text" [(ngModel)]="pessoa.nome" />
+                    <input type="text" [(ngModel)]="pessoa.idade" />
+
+                    <p>Meu nome é {{ pessoa.nome }} e tenho {{ pessoa.idade }} anos de idade!</p>
+
+                </div>
+
+            </div>
+        </article>
+
+    </section>
+
+
+    <!-- XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX -->
+    <!-- Parte da Aula 13 - Input Properties -->
+
+    <section class="input-output-properties">
+
+        <article>
+            <h1>Parte da Aula 13 - Input Properties</h1>
+            <h3>Input/Output Properties</h3>
+
+            <app-input-property [nome]="nomeDoCurso"></app-input-property>
+        </article>
+
+    </section>
+
+
+    <!-- XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX -->
+    <!-- Parte da Aula 14 - Output properties -->
+
+    <section class="input-output-properties">
+
+        <article>
+            <h1>Parte da Aula 14 - Output Properties</h1>
+            <h3>Input/Output Properties</h3>
+
+            <!-- <app-input-property [nome]="nomeDoCurso"></app-input-property> -->
+
+            <!-- Quando estamos passando um valor fisico(HardCoded) não precisamos usar Property Binding, mas se for uma variavel precisamos usa-lo -->
+            <app-output-property [valor]="valorInicial"
+                (mudouValor)="onMudouValor($event)"
+            ></app-output-property>
+        </article>
+
+    </section>
+
+</section>
