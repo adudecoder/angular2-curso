@@ -262,5 +262,24 @@ Todo componente no angular tem um conjunto de eventos de ciclo de vida([lifecycl
 # Aula 16 - Acesso ao DOM e ao Template com [ViewChild](https://angular.io/api/core/ViewChild)
 Decorador de propriedade que configura uma consulta de exibição. O detector de alterações procura o primeiro elemento ou a diretiva que corresponde ao seletor na view DOM. Se o DOM da exibição for alterado e um novo filho corresponder ao seletor, a propriedade será atualizada.
 
-# Aula 16 - Angular CLI
+# Aula 17 - Angular CLI: Instalação e criação de projetos: ng new e ng serve
 A [CLI Angular](https://angular.io/cli) é uma ferramenta de interface de linha de comando que você usa para inicializar, desenvolver, estruturar e manter aplicativos Angular diretamente de um shell de comando.
+
+# Aula 18 - Angular CLI: Criando components, services: ng generate
+[ng generate](https://angular.io/cli/generate) app-shell [ options ] ng g app-shell [ options ] Gera um shell de aplicativo para executar uma versão do lado do servidor de um aplicativo.
+
+## Outros tipos de arquivos que podemos criar
+1. Component
+* ng g c meu-component
+2. Service
+* ng g s meu-serviço
+3. Directive
+* ng g d minha-diretiva
+4. Pipe
+* ng g p meu-pipe
+5. Class
+* ng g class minha-classe
+6. Interface
+* ng g i minha-interface
+7. Enum
+* ng g e meu-enum
