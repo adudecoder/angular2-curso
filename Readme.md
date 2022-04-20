@@ -270,16 +270,22 @@ A [CLI Angular](https://angular.io/cli) é uma ferramenta de interface de linha 
 
 ## Outros tipos de arquivos que podemos criar
 1. Component
-* ng g c meu-component
+* > ng g c meu-component
 2. Service
-* ng g s meu-serviço
+* > ng g s meu-serviço
 3. Directive
-* ng g d minha-diretiva
+* > ng g d minha-diretiva
 4. Pipe
-* ng g p meu-pipe
+* > ng g p meu-pipe
 5. Class
-* ng g class minha-classe
+* > ng g class minha-classe
 6. Interface
-* ng g i minha-interface
+* > ng g i minha-interface
 7. Enum
-* ng g e meu-enum
+* > ng g e meu-enum
+
+# Aula 19 - Angular CLI: Usando pré-processadores (Sass, Less, Stylus)
+Um [pré-processador CSS](https://developer.mozilla.org/pt-BR/docs/Glossary/CSS_preprocessor) é um programa que permite você gerar CSS a partir de uma sintaxe única desse pré-processador. Os pré-processadores facilitam a manutenção do código, além de facultar um código limpo, utilizando vários arquivos para organizar os códigos e realizando a importação quando for necessário tornando os códigos CSS mais flexíveis e reutilizáveis.
+
+**Como utilizar em um projeto já pronto ?**
+* > ng config schematics.@schematics/angular:component.style scss
