@@ -1,0 +1,15 @@
+<h1> Primeiro Projeto Angular </h1>
+
+<meu-primeiro-component></meu-primeiro-component>
+
+<app-projeto2></app-projeto2>
+
+<app-cursos></app-cursos>
+
+<app-data-binding></app-data-binding>
+
+<app-ciclo [valorInicial]="valor" *ngIf="!deletarCiclo"></app-ciclo>
+<button (click)="mudarValor()">Mudar Valor</button>
+<button (click)="destruirCiclo()">Deletar component</button>
+
+<!-- No Angular existe uma diretiva que nos permite colocar condicionais, uma expressao booleana ou seja uma expressao condicional para gente redenrizar o component ou nao -->
