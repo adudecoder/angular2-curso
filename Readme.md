@@ -289,3 +289,10 @@ Um [pré-processador CSS](https://developer.mozilla.org/pt-BR/docs/Glossary/CSS_
 
 **Como utilizar em um projeto já pronto ?**
 * > ng config schematics.@schematics/angular:component.style scss
+
+# Aula 19 - Angular CLI: Usando pré-processadores (Sass, Less, Stylus)
+1. Exemplo 1 - Iniciando um projeto com os pré-processadores.
+![Exemplo1](img-exemplos-readme/sass.png)
+
+2. Exemplo 2 - Modificando o pré-processador para um outro.
+![Exemplo2](img-exemplos-readme/sass2.png)
