@@ -10,6 +10,7 @@ export class DiretivaNgifComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    console.log('Diretiva OK');
   }
 
 }

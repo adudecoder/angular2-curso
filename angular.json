@@ -85,18 +85,21 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "src/test.ts",
-            "polyfills": "src/polyfills.ts",
-            "tsConfig": "tsconfig.spec.json",
-            "karmaConfig": "karma.conf.js",
+            "main": "apps/federation/src/test.ts",
+            "polyfills": "apps/federation/src/polyfills.ts",
+            "tsConfig": "apps/federation/tsconfig.app.json",
+            "karmaConfig": "apps/federation/karma.conf.js",
+            "styles": ["apps/federation/src/styles.scss"],
+            "scripts": [],
             "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
-            "styles": [
-              "src/styles.css"
-            ],
-            "scripts": []
+              "./apps/federation/src/assets",
+              "./apps/federation/src/favicon.ico",
+              {
+                "glob": "**/*",
+                "input": "libs/translate/locale",
+                "output": "/libs/locale"
+              }
+            ]
           }
         }
       }

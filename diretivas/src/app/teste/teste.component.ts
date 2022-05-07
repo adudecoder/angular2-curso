@@ -7,9 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TesteComponent implements OnInit {
 
+  minhaVariavel!: string;
+
   constructor() { }
 
   ngOnInit(): void {
+    console.log('Diretiva OK');
   }
 
 }

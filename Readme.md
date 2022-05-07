@@ -290,9 +290,15 @@ Um [pré-processador CSS](https://developer.mozilla.org/pt-BR/docs/Glossary/CSS_
 **Como utilizar em um projeto já pronto ?**
 * > ng config schematics.@schematics/angular:component.style scss
 
-# Aula 19 - Angular CLI: Usando pré-processadores (Sass, Less, Stylus)
+* Versão antiga
 1. Exemplo 1 - Iniciando um projeto com os pré-processadores.
 ![Exemplo1](img-exemplos-readme/sass.png)
 
 2. Exemplo 2 - Modificando o pré-processador para um outro.
 ![Exemplo2](img-exemplos-readme/sass2.png)
+
+# Aula 20 - Angular CLI: ng lint, ng test, ng e2e
+1. ng lint
+* Vai fazer o lint do código, ou seja vai escanear o código, verificar por boas práticas do style guide, aqueles erros como ponto e virgula faltando ou um ponte e virgula extra.
+2. ng test e ng e2e
+* Vai executar os teste jasmine(**Testes unitários**)
