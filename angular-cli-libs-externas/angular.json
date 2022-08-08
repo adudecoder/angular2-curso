@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "diretivas": {
+    "angular-cli-libs-externas": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/diretivas",
+            "outputPath": "dist/angular-cli-libs-externas",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -69,10 +69,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "diretivas:build:production"
+              "browserTarget": "angular-cli-libs-externas:build:production"
             },
             "development": {
-              "browserTarget": "diretivas:build:development"
+              "browserTarget": "angular-cli-libs-externas:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -80,7 +80,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "diretivas:build"
+            "browserTarget": "angular-cli-libs-externas:build"
           }
         },
         "test": {
@@ -103,8 +103,5 @@
         }
       }
     }
-  },
-  "cli": {
-    "analytics": "406be749-b6f4-4027-ba57-a54729562bc6"
   }
 }
